@@ -1,0 +1,189 @@
+# =============================================================================
+# AppRelic Database Configuration
+# =============================================================================
+# This file provides examples for connecting to different databases
+# Copy the configuration you need to your .env file
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Option 1: SQLite (Default - No setup required)
+# -----------------------------------------------------------------------------
+# Best for: Development, Testing, Small projects
+# Pros: Zero configuration, portable, embedded
+# Cons: Limited concurrency, no network access
+# -----------------------------------------------------------------------------
+DB_TYPE=sqlite
+SQLITE_DB_FILE=apprelic.db
+
+
+# -----------------------------------------------------------------------------
+# Option 2: PostgreSQL (Recommended for Production)
+# -----------------------------------------------------------------------------
+# Best for: Production, High concurrency, Large datasets
+# Pros: ACID compliant, JSON support, powerful features
+# Cons: Requires separate server installation
+# Installation: https://www.postgresql.org/download/
+# -----------------------------------------------------------------------------
+# DB_TYPE=postgresql
+# POSTGRES_HOST=localhost
+# POSTGRES_PORT=5432
+# POSTGRES_DB=apprelic
+# POSTGRES_USER=postgres
+# POSTGRES_PASSWORD=your_password_here
+
+# PostgreSQL Docker Quick Start:
+# docker run -d \
+#   --name apprelic-postgres \
+#   -e POSTGRES_DB=apprelic \
+#   -e POSTGRES_PASSWORD=your_password \
+#   -p 5432:5432 \
+#   postgres:15
+
+
+# -----------------------------------------------------------------------------
+# Option 3: MySQL / MariaDB
+# -----------------------------------------------------------------------------
+# Best for: Web applications, WordPress-like environments
+# Pros: Wide hosting support, good performance
+# Cons: Less features than PostgreSQL
+# Installation: https://dev.mysql.com/downloads/
+# -----------------------------------------------------------------------------
+# DB_TYPE=mysql
+# MYSQL_HOST=localhost
+# MYSQL_PORT=3306
+# MYSQL_DB=apprelic
+# MYSQL_USER=root
+# MYSQL_PASSWORD=your_password_here
+
+# MySQL Docker Quick Start:
+# docker run -d \
+#   --name apprelic-mysql \
+#   -e MYSQL_DATABASE=apprelic \
+#   -e MYSQL_ROOT_PASSWORD=your_password \
+#   -p 3306:3306 \
+#   mysql:8
+
+
+# -----------------------------------------------------------------------------
+# Option 4: Microsoft SQL Server
+# -----------------------------------------------------------------------------
+# Best for: Enterprise Windows environments, .NET applications
+# Pros: Enterprise features, Azure integration
+# Cons: Resource intensive, licensing costs
+# Installation: https://www.microsoft.com/en-us/sql-server/sql-server-downloads
+# -----------------------------------------------------------------------------
+# DB_TYPE=mssql
+# MSSQL_HOST=localhost
+# MSSQL_PORT=1433
+# MSSQL_DB=apprelic
+# MSSQL_USER=sa
+# MSSQL_PASSWORD=Your_Password123!
+# MSSQL_DRIVER=ODBC Driver 17 for SQL Server
+
+# SQL Server Docker Quick Start:
+# docker run -d \
+#   --name apprelic-mssql \
+#   -e 'ACCEPT_EULA=Y' \
+#   -e 'SA_PASSWORD=Your_Password123!' \
+#   -p 1433:1433 \
+#   mcr.microsoft.com/mssql/server:2019-latest
+
+
+# -----------------------------------------------------------------------------
+# Advanced: Direct Database URL (Overrides all above)
+# -----------------------------------------------------------------------------
+# Use this if you have a custom connection string
+# Format examples:
+# - SQLite: sqlite:///./database.db
+# - PostgreSQL: postgresql://user:pass@localhost:5432/dbname
+# - MySQL: mysql+pymysql://user:pass@localhost:3306/dbname
+# - SQL Server: mssql+pyodbc://user:pass@localhost:1433/dbname?driver=...
+# -----------------------------------------------------------------------------
+# DATABASE_URL=your_complete_connection_string_here
+
+
+# =============================================================================
+# Cloud Database Examples
+# =============================================================================
+
+# AWS RDS PostgreSQL
+# DB_TYPE=postgresql
+# POSTGRES_HOST=mydb.abc123.us-east-1.rds.amazonaws.com
+# POSTGRES_PORT=5432
+# POSTGRES_DB=apprelic
+# POSTGRES_USER=admin
+# POSTGRES_PASSWORD=your_password
+
+# Azure SQL Database
+# DB_TYPE=mssql
+# MSSQL_HOST=myserver.database.windows.net
+# MSSQL_PORT=1433
+# MSSQL_DB=apprelic
+# MSSQL_USER=admin
+# MSSQL_PASSWORD=your_password
+# MSSQL_DRIVER=ODBC Driver 17 for SQL Server
+
+# Google Cloud SQL (PostgreSQL)
+# DB_TYPE=postgresql
+# POSTGRES_HOST=/cloudsql/project:region:instance
+# POSTGRES_PORT=5432
+# POSTGRES_DB=apprelic
+# POSTGRES_USER=postgres
+# POSTGRES_PASSWORD=your_password
+
+# Heroku Postgres
+# DATABASE_URL=postgres://user:pass@ec2-xxx.compute-1.amazonaws.com:5432/dbname
+
+# Railway
+# DATABASE_URL=postgresql://user:pass@containers-us-west-xxx.railway.app:5432/railway
+
+
+# =============================================================================
+# Connection Pool Settings (Optional)
+# =============================================================================
+# DB_POOL_SIZE=5
+# DB_MAX_OVERFLOW=10
+# DB_POOL_RECYCLE=3600
+# DB_POOL_PRE_PING=true
+# DB_ECHO=false  # Set to true for SQL query logging
+
+
+# =============================================================================
+# Quick Setup Guide
+# =============================================================================
+# 
+# 1. Choose your database (SQLite is default and easiest)
+# 2. Copy the relevant section above to your .env file
+# 3. Update the credentials
+# 4. Run: python database.py (to test connection)
+# 5. Run: python main.py (to start the server)
+#
+# For SQLite (easiest):
+#   Just use the default settings - no installation needed!
+#
+# For Docker databases:
+#   Use the Docker commands provided above
+#   Then update the credentials in .env
+#
+# For cloud databases:
+#   Use the cloud provider's connection details
+#   Make sure to whitelist your IP address
+#
+# =============================================================================
+
+
+# =============================================================================
+# Migration Between Databases
+# =============================================================================
+# To migrate from SQLite to PostgreSQL:
+# 1. Export data: pg_dump or use a migration tool
+# 2. Update .env with new database settings
+# 3. Run: python database.py (to create tables)
+# 4. Import your data
+# 5. Restart the application
+#
+# Recommended migration tools:
+# - pgloader (SQLite to PostgreSQL)
+# - MySQL Workbench (for MySQL migrations)
+# - SQL Server Migration Assistant (for SQL Server)
+# =============================================================================

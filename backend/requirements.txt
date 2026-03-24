@@ -1,0 +1,34 @@
+# Core FastAPI
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+python-dotenv
+
+# Database
+sqlalchemy
+psycopg2-binary
+pymysql
+pyodbc
+
+# AI/ML
+openai
+langchain
+langchain-openai
+crewai
+crewai-tools
+tiktoken
+
+# Vector Store
+faiss-cpu
+
+# Code Analysis
+GitPython
+
+# Document Export
+python-docx
+markdown
+
+# Utilities
+aiofiles
+requests
