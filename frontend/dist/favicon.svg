@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0891b2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e7490;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#grad1)"/>
+  
+  <!-- Stylized "A" for AppRelic -->
+  <path d="M32 12 L18 48 L24 48 L27 40 L37 40 L40 48 L46 48 L32 12Z" fill="white"/>
+  <path d="M29 34 L32 24 L35 34 Z" fill="url(#grad2)"/>
+  
+  <!-- Modernization arrows/circuit lines -->
+  <path d="M12 32 L8 32 L8 28 M56 32 L52 32 M52 28 L56 28 L56 32" 
+        stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <circle cx="8" cy="32" r="2" fill="white"/>
+  <circle cx="56" cy="32" r="2" fill="white"/>
+</svg>
